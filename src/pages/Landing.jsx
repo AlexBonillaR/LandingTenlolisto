@@ -5,7 +5,7 @@ import Hero from '../components/Hero';
 
 const Landing = () => {
   return (
-    <Box sx={{ paddingTop: '72px' }}>
+    <Box sx={{ paddingTop: '72px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
       <Nav />
       <Hero />
     </Box>
