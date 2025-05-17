@@ -15,7 +15,7 @@ const LeftColumn = styled(Box)({
   flex: 1
 });
 
-const MainHeading = styled(Typography)(({ theme }) => ({
+export const MainHeading = styled(Typography)(({ theme }) => ({
   fontSize: '48px',
   fontWeight: 'bold',
   marginBottom: theme.spacing(3)
@@ -26,7 +26,7 @@ const Description = styled(Typography)({
   fontSize: '18px'
 });
 
-const ButtonGroup = styled(Box)({
+export const ButtonGroup = styled(Box)({
   display: 'flex',
   gap: '16px',
   marginBottom: '32px'
@@ -66,7 +66,7 @@ const FloatingCard = styled(Paper)({
   borderRadius: '16px'
 });
 
-const TagLabel = styled(Typography)({
+export const TagLabel = styled(Typography)({
   display: 'inline-block',
   backgroundColor: 'rgba(139, 92, 246, 0.1)',
   color: '#8B5CF6',
@@ -85,7 +85,7 @@ const StatsContainer = styled(Box)({
   justifyContent: 'space-between'
 });
 
-const StatCard = styled(Paper)({
+export const StatCard = styled(Paper)({
   flex: 1,
   padding: '24px',
   display: 'flex',
@@ -113,7 +113,32 @@ const FeatureCard = ({ icon: Icon, title, description,  sx }) => (
 
 const Hero = () => {
   return (
-    <Box sx={{ paddingTop: '72px' }}>
+    <Box sx={{ 
+      paddingTop: '72px',
+      paddingBottom: '40px',
+      background: '#ffffff',
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        width: '30%',
+        height: '30%',
+        background: theme => `linear-gradient(135deg, ${theme.palette.primary.main} 0%, transparent 100%)`,
+        opacity: 1,
+      },
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '30%',
+        height: '30%',
+        background: theme => `linear-gradient(45deg, ${theme.palette.secondary.main} 0%, transparent 100%)`,
+        opacity: 1,
+      }
+    }}>
       <HeroContainer>
         <LeftColumn>
           <TagLabel>
@@ -183,8 +208,8 @@ const Hero = () => {
           <Typography variant="h6">Eventos</Typography>
         </StatCard>
         <StatCard elevation={3}>
-          <StatNumber>+50</StatNumber>
-          <Typography variant="h6">Equipo</Typography>
+          <StatNumber>Pronto</StatNumber>
+          <Typography variant="h6">Usuarios</Typography>
         </StatCard>
       </StatsContainer>
     </Box>
