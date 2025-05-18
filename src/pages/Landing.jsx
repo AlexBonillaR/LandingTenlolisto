@@ -5,6 +5,8 @@ import Hero from '../components/Hero';
 import Section2 from '../components/Section2';
 import Servicios from '../components/Servicios';
 import Events from '../components/Events';
+import Equipo from '../components/Equipo';
+import Footer from '../components/Footer';
 import CustomButton from '../components/CustomButton';
 
 const Landing = () => {
@@ -15,6 +17,8 @@ const Landing = () => {
       <Section2 />
       <Servicios />
       <Events />
+      <Equipo />
+      <Footer />
   
     </Box>
   );
