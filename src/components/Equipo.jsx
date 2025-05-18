@@ -70,11 +70,12 @@ const Equipo = () => {
     return (
         <Box sx={{
             py: 8,
-            px: 2,
+            px: 3,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            background: '#fff'
+            background: '#fff',
+            gap: 4
         }}>
             <TagLabel>Nuestro Equipo</TagLabel>
 

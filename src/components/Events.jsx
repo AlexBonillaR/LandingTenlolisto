@@ -34,15 +34,19 @@ const Events = () => {
         <Box sx={{
             paddingTop: '72px',
             backgroundColor: '#f5f5f5',
-            minHeight: '100vh'
+            minHeight: { xs: 'auto', md: '100vh' },
+            maxHeight: { md: '1200px' },
+            overflow: 'auto'
         }}>
             <Box sx={{
-                maxWidth: '1200px',
+                maxWidth: '1440px',
                 margin: '0 auto',
-                padding: '40px 20px',
+                padding: '40px 24px',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center'
+                alignItems: 'center',
+                gap: 4,
+                height: 'fit-content'
             }}>
                 <TagLabel>Descubre y Reserva</TagLabel>
 

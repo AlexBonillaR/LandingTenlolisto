@@ -67,11 +67,21 @@ const Servicios = () => {
 
   return (
     <Box sx={{
-      py: 10,
+      py: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 4,
       background: 'linear-gradient(45deg,rgb(30, 68, 155) -100%,rgb(30, 41, 59) 50%,rgba(112, 46, 129, 0.79) 250%)',
-      minHeight: '100vh',
+      minHeight: { xs: 'auto', md: '100vh' },
+      maxHeight: { md: '120px' },
+      overflow: 'auto'
     }}>
-      <Box sx={{ maxWidth: 'lg', mx: 'auto', px: { xs: 3, sm: 6, md: 8 } }}>
+      <Box sx={{ 
+        maxWidth: 'lg', 
+        mx: 'auto', 
+        px: { xs: 3, sm: 6, md: 8 },
+        height: 'fit-content'
+      }}>
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <TagLabel sx={{ color: 'secondary.light' }}>
             Servicios Profesionales

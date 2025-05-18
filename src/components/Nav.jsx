@@ -32,7 +32,7 @@ const MenuList = styled(List)({
     }
 });
 
-const GradientTypography = styled(Typography)({
+export const GradientTypography = styled(Typography)({
     background: 'linear-gradient(45deg, #7e4dc8, #4389db)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',

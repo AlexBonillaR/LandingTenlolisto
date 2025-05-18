@@ -39,11 +39,11 @@ const BottomGroup = [
 const Section2 = () => {
     return (
         <Box sx={{ 
-            padding: '40px 20px', 
+            padding: '40px 24px', 
             display: 'flex', 
             flexDirection: 'column', 
             alignItems: 'center',
-            marginTop: '80px'
+            gap: 4
         }}>
             <TagLabel sx={{ marginBottom: '16px', fontSize: '20px', fontWeight: 'bold', color: '#3B82F6' }}>
                 Explora Nuestras Funcionalidades
