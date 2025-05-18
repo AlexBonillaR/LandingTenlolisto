@@ -22,7 +22,7 @@ export const MainHeading = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(3)
 }));
 
-const Description = styled(Typography)({
+export const Description = styled(Typography)({
   marginBottom: '32px',
   fontSize: '18px'
 });

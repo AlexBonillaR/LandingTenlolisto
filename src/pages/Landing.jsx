@@ -4,6 +4,8 @@ import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Section2 from '../components/Section2';
 import Servicios from '../components/Servicios';
+import Events from '../components/Events';
+import CustomButton from '../components/CustomButton';
 
 const Landing = () => {
   return (
@@ -12,6 +14,7 @@ const Landing = () => {
       <Hero />
       <Section2 />
       <Servicios />
+      <Events />
   
     </Box>
   );
