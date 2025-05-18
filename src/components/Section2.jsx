@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { MainHeading, TagLabel, StatCard, ButtonGroup } from './Hero';
 import { Storage, Search, PhoneIphone, Shield } from '@mui/icons-material';
+import CustomButton from './CustomButton';
 
 const featureData = [
     {
@@ -35,7 +36,7 @@ const BottomGroup = [
     }
 ]
 
-const Section = () => {
+const Section2 = () => {
     return (
         <Box sx={{ 
             padding: '40px 20px', 
@@ -68,18 +69,15 @@ const Section = () => {
                 ))}
             </Box>
             <ButtonGroup>
-                <Button 
-                    variant="contained" 
+                <CustomButton 
                     color="secondary" 
-                    size="large" 
                     endIcon={<Storage />}
-                    sx={{textTransform: 'initial'}}
                 >
                     Descubrir Catálogos
-                </Button>
+                </CustomButton>
             </ButtonGroup>
         </Box>
     );
 };
 
-export default Section;
+export default Section2;

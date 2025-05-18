@@ -3,20 +3,22 @@ import {
     AppBar,
     Toolbar,
     Typography,
-    Button,
     List,
     ListItem,
     styled,
-    Container // <-- Importa Container
+    Container
 } from '@mui/material';
+import CustomButton from './CustomButton';
 
 const StyledToolbar = styled(Toolbar)({
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
-    padding: 0, // Quita el padding aquí
+    padding: 0,
     backgroundColor: 'white',
-    borderBottom: '1px solid rgba(224, 224, 224, 0.2)'
+    borderBottom: '1px solid rgba(224, 224, 224, 0.2)',
+    maxWidth: '1200px',
+    margin: '0 auto'
 });
 
 const MenuList = styled(List)({
@@ -40,8 +42,15 @@ const GradientTypography = styled(Typography)({
 
 const Nav = () => {
     return (
-        <AppBar position="fixed" color="transparent" elevation={0}>
-            <Container maxWidth="lg" disableGutters sx={{ padding: '1rem 2rem' }}>
+        <AppBar position="fixed" color="transparent" elevation={0} sx={{ backgroundColor: 'white' }}>
+            <Container 
+                maxWidth={false} 
+                disableGutters 
+                sx={{ 
+                    padding: '1rem 20px',
+                    borderBottom: '1px solid rgba(224, 224, 224, 0.2)'
+                }}
+            >
                 <StyledToolbar>
                     <GradientTypography sx={{fontSize: '30px'}} component="h1">
                         TenloListo
@@ -52,18 +61,9 @@ const Nav = () => {
                         <ListItem>Eventos</ListItem>
                         <ListItem>Equipo</ListItem>
                     </MenuList>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        sx={{
-                            padding: '12px 30px',
-                            borderRadius: '30px',
-                            fontSize: '20px',
-                            textTransform: 'capitalize',
-                        }}
-                    >
+                    <CustomButton color="primary">
                         Iniciar Sesión
-                    </Button>
+                    </CustomButton>
                 </StyledToolbar>
             </Container>
         </AppBar>

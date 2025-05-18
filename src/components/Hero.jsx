@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography, Button, Paper, styled } from '@mui/material';
 import { ShoppingCart, CalendarMonth, People } from '@mui/icons-material';
 import { CU } from 'country-flag-icons/react/3x2';
+import CustomButton from './CustomButton';
 
 const HeroContainer = styled(Box)({
   maxWidth: '1200px',
@@ -103,7 +104,7 @@ const StatNumber = styled(Typography)({
   fontSize: '2.5rem'
 });
 
-const FeatureCard = ({ icon: Icon, title, description,  sx }) => (
+const FeatureCard = ({ icon: Icon, title, description, sx }) => (
   <FloatingCard elevation={3} sx={sx}>
     <Icon />
     <Typography variant="subtitle1">{title}</Typography>
@@ -113,7 +114,7 @@ const FeatureCard = ({ icon: Icon, title, description,  sx }) => (
 
 const Hero = () => {
   return (
-    <Box sx={{ 
+    <Box sx={{
       paddingTop: '72px',
       paddingBottom: '40px',
       background: '#ffffff',
@@ -142,26 +143,30 @@ const Hero = () => {
       <HeroContainer>
         <LeftColumn>
           <TagLabel>
-            Próximamente en Cuba <CU style={{ width: '20px', marginLeft: '4px', verticalAlign: 'text-bottom' }}/>
+            Próximamente en Cuba <CU style={{ width: '20px', marginLeft: '4px', verticalAlign: 'text-bottom' }} />
           </TagLabel>
-          
+
           <MainHeading variant="h2" color='text.primary'>
-            Tu <span style={{ color: '#8B5CF6' }}>solución</span>{' '}
-            <span style={{ color: '#3B82F6' }}>completa</span> de compras y eventos
+            Tu <span style={{
+              background: 'linear-gradient(90deg, #7e4dc8 , #4389db )',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>solución completa</span> de compras y eventos
           </MainHeading>
-          
+
           <Description variant="body1" color='text.secondary'>
-            Optimiza tus compras y gestiona tus eventos de manera eficiente. 
+            Optimiza tus compras y gestiona tus eventos de manera eficiente.
             Una plataforma integral para todas tus necesidades.
           </Description>
 
           <ButtonGroup>
-            <Button variant="contained" color="primary" size="large" sx={{textTransform: 'initial'}} >
+            <CustomButton color="primary">
               Regístrate ahora
-            </Button>
-            <Button variant="outlined" color="primary" size="large" sx={{textTransform: 'initial'}}  >
+            </CustomButton>
+            <CustomButton variant="outlined" color="primary">
               Conoce más
-            </Button>
+            </CustomButton>
           </ButtonGroup>
 
           <Typography variant="h6" color="text.secondary" sx={{ fontWeight: 'bold' }}>
@@ -176,16 +181,16 @@ const Hero = () => {
             <Description color="textSecondary"> Catalogos de tiendas y productos</Description>
           </MainCard>
 
-          <FeatureCard 
+          <FeatureCard
             icon={CalendarMonth}
             title="Reservas"
             description={"Reserva tus productos"}
             sx={{ position: 'absolute', top: '20%', right: '20%' }}
-            
-            
+
+
           />
-          
-          <FeatureCard 
+
+          <FeatureCard
             icon={People}
             title="Servicios"
             description="Conexión con proveedores"
