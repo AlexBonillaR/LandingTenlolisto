@@ -58,7 +58,7 @@ const Footer = () => {
 
     return (
         <Box component="footer" sx={styles.footer}>
-            <Container sx={styles.container}>
+            <Container>
                 <Grid container spacing={8}>
                     {/* Logo y descripción */}
                     <Grid item xs={12} md={6} lg={3} sx={styles.column}>

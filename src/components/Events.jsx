@@ -39,8 +39,8 @@ const Events = () => {
             overflow: 'auto'
         }}>
             <Box sx={{
-                maxWidth: '1440px',
-                margin: '0 auto',
+                // maxWidth: '1440px',
+                // margin: '0 auto',
                 padding: '40px 24px',
                 display: 'flex',
                 flexDirection: 'column',

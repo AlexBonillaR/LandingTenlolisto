@@ -77,9 +77,7 @@ const Servicios = () => {
       overflow: 'auto'
     }}>
       <Box sx={{ 
-        maxWidth: 'lg', 
-        mx: 'auto', 
-        px: { xs: 3, sm: 6, md: 8 },
+        // px: { xs: 3, sm: 6, md: 8 },
         height: 'fit-content'
       }}>
         <Box sx={{ textAlign: 'center', mb: 8 }}>

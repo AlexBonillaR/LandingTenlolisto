@@ -5,8 +5,7 @@ import { CU } from 'country-flag-icons/react/3x2';
 import CustomButton from './CustomButton';
 
 const HeroContainer = styled(Box)({
-  maxWidth: '1200px',
-  margin: '0 auto',
+  width: '100%',
   padding: '40px 20px',
   display: 'flex',
   gap: '40px'
@@ -79,8 +78,8 @@ export const TagLabel = styled(Typography)({
 });
 
 const StatsContainer = styled(Box)({
-  maxWidth: '1200px',
-  margin: '60px auto 0',
+  width: '100%',
+  margin: '60px 0 0 0',
   display: 'flex',
   gap: '24px',
   justifyContent: 'space-between'
