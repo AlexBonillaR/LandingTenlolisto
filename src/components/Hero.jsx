@@ -4,6 +4,7 @@ import { ShoppingCart, CalendarMonth, People } from '@mui/icons-material';
 import { CU } from 'country-flag-icons/react/3x2';
 import CustomButton from './CustomButton';
 
+
 const HeroContainer = styled(Box)({
   width: '100%',
   padding: '40px 20px',
@@ -16,9 +17,10 @@ const LeftColumn = styled(Box)({
 });
 
 export const MainHeading = styled(Typography)(({ theme }) => ({
-  fontSize: '48px',
+  fontSize: '75px',
   fontWeight: 'bold',
-  marginBottom: theme.spacing(3)
+  marginBottom: theme.spacing(3),
+  lineHeight: '.9' 
 }));
 
 export const Description = styled(Typography)({
@@ -38,32 +40,40 @@ const CardsContainer = styled(Box)({
   height: '400px'
 });
 
-const MainCard = styled(Paper)({
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '280px',
-  height: '200px',
+const CardWrapper = styled(Paper)({
+  background: '#ffffff',
+  borderRadius: '24px',
+  padding: '17px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+});
+
+const MainCard = styled(Box)({
+  width: '580px',
+  height: '360px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   gap: '16px',
-  backgroundColor: '#fff',
-  borderRadius: '16px'
+  backgroundColor: '#f5f5f5', // Cambiado a gris claro
+  borderRadius: '24px',
+  transition: 'all 0.3s ease',
+// Añadida inclinación de 2 grados
 });
 
-const FloatingCard = styled(Paper)({
-  width: '180px',
-  height: '140px',
+const MediumCard = styled(Box)({
+  width: '280px',
+  height: '120px',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
+  alignItems: 'start',
+  padding: '16px',
   justifyContent: 'center',
-  gap: '8px',
-  backgroundColor: '#fff',
-  borderRadius: '16px'
+  backgroundColor: '#f5f5f5', // Cambiado a gris claro
+  borderRadius: '22px',
+  transition: 'all 0.3s ease',
 });
 
 export const TagLabel = styled(Typography)({
@@ -87,7 +97,7 @@ const StatsContainer = styled(Box)({
 
 export const StatCard = styled(Paper)({
   flex: 1,
-  padding: '24px',
+  padding: '10px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -114,30 +124,14 @@ const FeatureCard = ({ icon: Icon, title, description, sx }) => (
 const Hero = () => {
   return (
     <Box sx={{
-      paddingTop: '72px',
+      paddingTop: '130px',
       paddingBottom: '40px',
-      background: '#ffffff',
+      background: `
+        radial-gradient(circle at 0% 100%, rgba(126, 77, 200, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 100% 0%, rgba(67, 137, 219, 0.05) 0%, transparent 50%),
+        #ffffff
+      `,
       position: 'relative',
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        width: '30%',
-        height: '30%',
-        background: theme => `linear-gradient(135deg, ${theme.palette.primary.main} 0%, transparent 100%)`,
-        opacity: 1,
-      },
-      '&::after': {
-        content: '""',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        width: '30%',
-        height: '30%',
-        background: theme => `linear-gradient(45deg, ${theme.palette.secondary.main} 0%, transparent 100%)`,
-        opacity: 1,
-      }
     }}>
       <HeroContainer>
         <LeftColumn>
@@ -173,45 +167,73 @@ const Hero = () => {
           </Typography>
         </LeftColumn>
 
-        <CardsContainer>
-          <MainCard elevation={4}>
-            <ShoppingCart sx={{ fontSize: 40 }} />
-            <Typography variant="h6">Catálogos Digitales</Typography>
-            <Description color="textSecondary"> Catalogos de tiendas y productos</Description>
-          </MainCard>
+        <CardsContainer pt={'100px'}>
+          <CardWrapper elevation={15}
+            sx={{
+              transform: 'rotate(4deg)'
+            }}>
+            <MainCard >
+              <ShoppingCart sx={{ 
+                fontSize: 64, // Icono más grande
+                color: '#7e4dc8'
+              }} />
+              <Typography variant="h4" sx={{ fontWeight: 700 }}>Catálogos Digitales</Typography>
+              <Description color="text.secondary">Catalogos de tiendas y productos</Description>
+            </MainCard>
+          </CardWrapper>
 
-          <FeatureCard
-            icon={CalendarMonth}
-            title="Reservas"
-            description={"Reserva tus productos"}
-            sx={{ position: 'absolute', top: '20%', right: '20%' }}
+          <CardWrapper
+            sx={{
+              position: 'absolute',
+              bottom: '-35%',  // Más arriba del fondo
+              right: '5%',   
+            }}
+            elevation={10}
+          >
+            <MediumCard >
+              <People sx={{ 
+                fontSize: 36,
+                color: '#7e4dc8'
+              }} />
+              <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>Servicios</Typography>
+              <Typography color="text.secondary">Conexión con proveedores</Typography>
+            </MediumCard>
+          </CardWrapper>
 
-
-          />
-
-          <FeatureCard
-            icon={People}
-            title="Servicios"
-            description="Conexión con proveedores"
-            sx={{ position: 'absolute', bottom: '20%', left: '20%' }}
-          />
+          <CardWrapper
+            sx={{
+              position: 'absolute',
+              bottom: '3%',     // Más arriba
+              left: '-5%',   // Más hacia el centro
+            }}
+            elevation={10}
+          >
+            <MediumCard >
+              <CalendarMonth sx={{ 
+                fontSize: 36,  // Icono más grande
+                color: '#4389db'
+              }} />
+              <Typography variant="subtitle" sx={{ fontWeight: 700 }}>Reservas</Typography>
+              <Typography color="text.secondary">Reserva tus productos</Typography>
+            </MediumCard>
+          </CardWrapper>
         </CardsContainer>
       </HeroContainer>
 
       <StatsContainer>
-        <StatCard elevation={3}>
-          <StatNumber>+1.2K</StatNumber>
+        <StatCard elevation={1}>
+          <StatNumber>100+</StatNumber>
           <Typography variant="h6">Catálogos</Typography>
         </StatCard>
-        <StatCard elevation={3}>
-          <StatNumber>+800</StatNumber>
+        <StatCard elevation={1}>
+          <StatNumber>50+</StatNumber>
           <Typography variant="h6">Servicios</Typography>
         </StatCard>
-        <StatCard elevation={3}>
-          <StatNumber>+500</StatNumber>
+        <StatCard elevation={1}>
+          <StatNumber>25+</StatNumber>
           <Typography variant="h6">Eventos</Typography>
         </StatCard>
-        <StatCard elevation={3}>
+        <StatCard elevation={1}>
           <StatNumber>Pronto</StatNumber>
           <Typography variant="h6">Usuarios</Typography>
         </StatCard>
