@@ -25,17 +25,27 @@ const Landing = () => {
       <Stack 
         spacing={0} 
         sx={{ 
-          margin: 0, 
+          marginTop: '80px', // Añadir margen superior para compensar el navbar
           padding: 0,
           width: '100%',
           position: 'relative'
         }}
       >
-        <Hero />
-        <Section2 />
-        <Servicios />
-        <Events />
-        <Equipo />
+        <Box id="inicio">
+          <Hero />
+        </Box>
+        <Box id="catalogos">
+          <Section2 />
+        </Box>
+        <Box id="servicios">
+          <Servicios />
+        </Box>
+        <Box id="eventos">
+          <Events />
+        </Box>
+        <Box id="equipo">
+          <Equipo />
+        </Box>
         <Footer />
       </Stack>
     </Box>

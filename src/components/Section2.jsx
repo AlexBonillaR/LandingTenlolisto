@@ -1,67 +1,73 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
-import { MainHeading, TagLabel, StatCard, ButtonGroup } from './Hero';
-import { Storage, Search, PhoneIphone, Shield } from '@mui/icons-material';
+import { Box, Typography, Button, styled, Container } from '@mui/material';
+import { TagLabel, StatCard, ButtonGroup } from './Hero';
+import { LocalMall, Search, PhoneIphone, Shield } from '@mui/icons-material';
 import CustomButton from './CustomButton';
 
 const featureData = [
     {
-        icon: Storage,
+        icon: LocalMall,
         title: "Catálogos Digitales",
         description: "Gestiona y visualiza todos tus productos en un solo lugar",
-        iconColor: "#8B5CF6" // purple
+        iconColor: "primary.main" // usando color del tema
     },
     {
         icon: Search,
         title: "Descubrimiento Inteligente",
         description: "Encuentra productos y servicios de forma rápida y eficiente",
-        iconColor: "#3B82F6" // blue
+        iconColor: "secondary.main" // usando color del tema
     },
     {
         icon: PhoneIphone,
         title: "Acceso Móvil",
         description: "Gestiona tu negocio desde cualquier lugar con tu smartphone",
-        iconColor: "#2DD4BF" // teal
+        iconColor: "primary.main" // usando color del tema
     },
     {
         icon: Shield,
         title: "Compras seguras",
         description: "Transacciones protegidas y proceso de compra verificado",
-        iconColor: "#F59E0B" // amber
+        iconColor: "secondary.main" // usando color del tema
     }
 ];
-const BottomGroup = [
-    {
-        icon: Storage,
-    }
-]
+
+
+const MainHeading2 = styled(Typography)(({ theme }) => ({
+    fontSize: '45px',
+    fontWeight: 'bold',
+    // color:"red",
+    marginBottom: theme.spacing(3),
+    lineHeight: '.9'
+}));
 
 const Section2 = () => {
     return (
-        <Box sx={{ 
-            padding: '40px 24px', 
-            display: 'flex', 
-            flexDirection: 'column', 
+        <Box sx={{
+            padding: '40px 24px',
+            display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             gap: 4
         }}>
-            <TagLabel sx={{ marginBottom: '16px', fontSize: '20px', fontWeight: 'bold', color: '#3B82F6' }}>
-                Explora Nuestras Funcionalidades
-            </TagLabel>
-            <MainHeading variant='h3' color='text.primary'>
-                Todo lo que necesitas en un <span style={{
-                    background: 'linear-gradient(90deg, #7e4dc8 , #4389db )',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text'
-                }}>único lugar</span>{' '}
-            </MainHeading>
-            <Typography variant="h6" color="textSecondary" sx={{ marginBottom: '32px', fontSize: '18px', textAlign: 'center' }}>
-                Tenlolisto revoluciona la forma de descubrir, comprar y disfrutar de productos y servicios en Cuba con una plataforma diseñada para facilitar tu vida.
-            </Typography>
-            <Box sx={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '40px' }}>
+            <Container maxWidth="md" sx={{ textAlign: 'center' }}>
+                <TagLabel sx={{ marginBottom: '16px', fontSize: '15px', fontWeight: 'bold', color: '#3B82F6' }}>
+                    Explora Nuestras Funcionalidades
+                </TagLabel>
+                <MainHeading2 variant='h3' color='text.primary'>
+                    Todo lo que necesitas en un <span style={{
+                        background: 'linear-gradient(90deg, #7e4dc8 , #4389db )',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text'
+                    }}>único lugar</span>{' '}
+                </MainHeading2>
+                <Typography variant="h6" color="textSecondary" sx={{ marginBottom: '32px', fontSize: '20px' }}>
+                    Tenlolisto revoluciona la forma de descubrir, comprar y disfrutar de productos y servicios en Cuba con una plataforma diseñada para facilitar tu vida.
+                </Typography>
+            </Container>
+            <Box sx={{ display: 'flex', gap: '40px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '40px' }}>
                 {featureData.map((feature, index) => (
-                    <StatCard key={index} elevation={3} sx={{ width: '300px', padding: '32px 24px' }}>
+                    <StatCard key={index} elevation={3} sx={{ width: '250px', padding: '32px 24px' }}>
                         <feature.icon sx={{ fontSize: 40, color: feature.iconColor, mb: 2 }} />
                         <Typography variant="h6" sx={{ mb: 1 }}>{feature.title}</Typography>
                         <Typography color="text.secondary">{feature.description}</Typography>
@@ -69,9 +75,9 @@ const Section2 = () => {
                 ))}
             </Box>
             <ButtonGroup>
-                <CustomButton 
-                    color="secondary" 
-                    endIcon={<Storage />}
+                <CustomButton
+                    color="secondary"
+                    endIcon={<LocalMall />}
                 >
                     Descubrir Catálogos
                 </CustomButton>

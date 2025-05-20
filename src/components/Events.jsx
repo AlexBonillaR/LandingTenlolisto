@@ -29,50 +29,174 @@ const commonButtonStyles = {
     }
 };
 
+const upcomingEvents = [
+    {
+        icon: <MusicNote sx={{ fontSize: 40, color: '#7c3aed', m: 2 }} />,
+            label: "Música",
+        title: "Festival de Música Cubana",
+        date: "15 de Mayo, 2025",
+        time: "5:00 PM",
+        location: "La Habana"
+    },
+    {
+        icon: <Restaurant sx={{ fontSize: 40, color: '#7c3aed', m: 2 }} />,
+        label: "Comida",
+        title: "Feria Gastronómica",
+        date: "22 de Mayo, 2025",
+        time: "12:00 PM",
+        location: "Santiago de Cuba"
+    },
+    {
+        icon: <Movie sx={{ fontSize: 40, color: '#7c3aed', m: 2 }} />,
+        label: "Cine",
+        title: "Festival de Cine",
+        date: "5 de Junio, 2025",
+        time: "7:00 PM",
+        location: "La Habana"
+    }
+];
+
+const EventCardItem = ({ event }) => (
+    <EventCard>
+        <ImagePlaceholder sx={{ 
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1
+        }}>
+            {event.icon}
+            <Typography
+                sx={{
+                    fontWeight: 600,
+                    color: '#7c3aed'
+                }}
+            >
+                {event.label}
+            </Typography>
+        </ImagePlaceholder>
+        <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+            {event.title}
+        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+            <CalendarMonth sx={{ 
+                background: 'linear-gradient(90deg, #7c3aed, #4389db)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+            }} />
+            <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                {event.date}
+            </Typography>
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+            <Schedule sx={{ 
+                background: 'linear-gradient(90deg, #7c3aed, #4389db)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+            }} />
+            <Typography variant="body2">{event.time}</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+            <LocationOn sx={{ 
+                background: 'linear-gradient(90deg, #7c3aed, #4389db)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+            }} />
+            <Typography variant="body2">{event.location}</Typography>
+        </Box>
+        <Button variant="outlined" fullWidth sx={{
+            ...commonButtonStyles,
+            borderColor: '#7c3aed',
+            color: '#7c3aed',
+            '&:hover': {
+                ...commonButtonStyles['&:hover'],
+                borderColor: '#7c3aed',
+                bgcolor: 'rgba(124, 58, 237, 0.04)'
+            }
+        }}>
+            Reservar
+        </Button>
+    </EventCard>
+);
+
+// Añadir este estilo personalizado para el heading principal, similar al de Servicios
+const MainHeading2 = styled(Typography)(({ theme }) => ({
+    fontSize: '45px',
+    fontWeight: 'bold',
+    marginBottom: theme.spacing(3),
+    lineHeight: '1'
+}));
+
 const Events = () => {
     return (
         <Box sx={{
-            paddingTop: '72px',
+            // Actualizar el contenedor principal
+            py: 9,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 4,
+            position: 'relative',
             backgroundColor: '#f5f5f5',
-            minHeight: { xs: 'auto', md: '100vh' },
-            maxHeight: { md: '1200px' },
-            overflow: 'auto'
+            '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: '10%',
+                right: '0%',
+                width: '40%',
+                height: '40%',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(124, 58, 237, 0.1) -150%, rgba(73, 32, 83, 0) 150%)',
+                filter: 'blur(50px)',
+                zIndex: 0,
+            }
         }}>
             <Box sx={{
-                // maxWidth: '1440px',
-                // margin: '0 auto',
-                padding: '40px 24px',
+                position: 'relative',
+                zIndex: 1,
+                height: 'fit-content',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: 4,
-                height: 'fit-content'
+                maxWidth: 1200,
+                mx: 'auto',
+                px: { xs: 2, sm: 4 }
             }}>
                 <TagLabel>Descubre y Reserva</TagLabel>
 
-                <MainHeading color='text.primary' sx={{ textAlign: 'center', maxWidth: '800px' }}>
+                {/* Reemplazar MainHeading por MainHeading2 */}
+                <MainHeading2 sx={{ textAlign: 'center', maxWidth: '800px' }}>
                     Encuentra los mejores{' '}
-                    <span style={{
+                    <Box component="span" sx={{
                         background: 'linear-gradient(90deg, #7e4dc8 , #4389db )',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text'
-                    }}>eventos en Cuba</span>{' '}
-                </MainHeading>
+                    }}>eventos en Cuba</Box>
+                </MainHeading2>
 
-                <Description color="text.secondary" sx={{ textAlign: 'center', maxWidth: '700px', mb: 4 }}>
+                <Description sx={{
+                    textAlign: 'center',
+                    maxWidth: '700px',
+                    mb: 4,
+                    color: 'text.secondary'
+                }}>
                     Conoce, reserva y asiste a los eventos más populares. Nunca te pierdas un
                     concierto, feria o encuentro importante.
                 </Description>
 
                 {/* Evento Destacado */}
                 <Box sx={{
-                    width: '100%',
+                    width: '95%', // Cambiado a 95% para dar más espacio en los bordes
+                    maxWidth: '1400px',
+                    margin: '0 auto',
                     background: 'linear-gradient(120deg, #7c3aed 0%, #7c3aed 45%, #4F46E5 55%, #4F46E5 100%)',
                     borderRadius: '16px',
                     display: 'flex',
                     justifyContent: 'space-between',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
                 }}>
                     <Box sx={{
                         flex: '0 0 60%',
@@ -82,39 +206,47 @@ const Events = () => {
                         flexDirection: 'column',
                         gap: 2
                     }}>
-                        <TagLabel variant="caption" sx={{ 
-                            textAlign: 'initial', 
-                            background: 'rgba(245, 245, 245, 0.44)', 
-                            backdropFilter: 'blur(8px)', 
-                            borderRadius: '20px', 
+                        <TagLabel variant="caption" sx={{
+                            textAlign: 'initial',
+                            background: 'rgba(245, 245, 245, 0.44)',
+                            backdropFilter: 'blur(8px)',
+                            borderRadius: '20px',
                             p: 1,
                             display: 'flex',
                             alignItems: 'center',
                             gap: 1
                         }}>
                             <AirplaneTicket sx={{ fontSize: 20, color: 'white' }} />
-                            <Typography sx={{ fontWeight: 'bold', color: 'white' }}>
+                            <Typography sx={{ fontWeight: 800, color: 'white' }}> {/* Aumentado weight */}
                                 Evento Destacado
                             </Typography>
                         </TagLabel>
 
-                        <Typography variant="h4">
+                        <Typography variant="h4" sx={{
+                            fontWeight: 800,  // Añadido bold
+                            fontSize: '2.5rem', // Aumentado tamaño
+                            letterSpacing: '-0.02em' // Ajuste de espaciado
+                        }}>
                             Gran Inauguración TenloListo
                         </Typography>
 
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                             <CalendarMonth fontSize="small" />
-                            <Typography>Próximamente, 2025</Typography>
+                            <Typography sx={{ fontWeight: 600 }}> {/* Añadido semi-bold */}
+                                Próximamente, 2025
+                            </Typography>
                         </Box>
 
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                             <Schedule fontSize="small" />
-                            <Typography>Por anunciar</Typography>
+                            <Typography sx={{ opacity: 0.9 }}>Por anunciar</Typography>
                         </Box>
 
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                             <LocationOn fontSize="small" />
-                            <Typography>La Habana, Cuba</Typography>
+                            <Typography sx={{ fontWeight: 600 }}> {/* Añadido semi-bold */}
+                                La Habana, Cuba
+                            </Typography>
                         </Box>
 
                         <Button
@@ -123,11 +255,14 @@ const Events = () => {
                                 ...commonButtonStyles,
                                 bgcolor: 'white',
                                 color: '#7c3aed',
+                                fontWeight: 700, // Añadido más bold al botón
+                                fontSize: '1.05rem', // Ligeramente más grande
                                 '&:hover': {
                                     ...commonButtonStyles['&:hover'],
                                     bgcolor: 'rgba(255, 255, 255, 0.9)',
                                 },
-                                alignSelf: 'flex-start'
+                                alignSelf: 'flex-start',
+                                mt: 1 // Añadido margen superior
                             }}
                         >
                             Más información
@@ -137,21 +272,45 @@ const Events = () => {
                         background: 'linear-gradient(120deg, #7c3aed 0%, #7c3aed 45%, #4F46E5 55%, #4F46E5 100%)',
                         flex: '0 0 40%',
                         display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
                         p: 4,
+                        gap: 3 // Aumentado el gap
                     }}>
-                        <TagLabel sx={{ background: 'rgba(245, 245, 245, 0.44)', backdropFilter: 'blur(8px)', borderRadius: '50%', p: 2 }}>
+                        <TagLabel sx={{
+                            background: 'rgba(245, 245, 245, 0.44)',
+                            backdropFilter: 'blur(8px)',
+                            borderRadius: '50%',
+                            p: 2,
+                            transition: 'transform 0.3s ease', // Añadido transición
+                            '&:hover': {
+                                transform: 'scale(1.05)' // Efecto hover
+                            }
+                        }}>
                             <CalendarMonth sx={{
-                            fontSize: 100,
-                            color: 'rgba(255, 255, 255, 0.9)',
-                        }} />
+                                fontSize: 70, // Reducido un poco más
+                                color: 'rgba(255, 255, 255, 0.9)',
+                            }} />
                         </TagLabel>
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                color: 'white',
+                                fontWeight: 800, // Aumentado bold
+                                textAlign: 'center',
+                                fontSize: '1.3rem', // Aumentado tamaño
+                                textTransform: 'uppercase', // Añadido mayúsculas
+                                letterSpacing: '0.05em' // Añadido espaciado
+                            }}
+                        >
+                            ¡Mantente atento!
+                        </Typography>
                     </Box>
                 </Box>
 
                 {/* Próximos Eventos */}
-                <Typography variant="h5" sx={{ alignSelf: 'flex-start', mb: 3, color: 'text.primary' }}>
+                <Typography variant="h5" sx={{ alignSelf: 'flex-start', mb: 3, color: 'text.primary', fontWeight: 600, }}>
                     Próximos Eventos
                 </Typography>
 
@@ -166,98 +325,9 @@ const Events = () => {
                     width: '100%',
                     mb: 4
                 }}>
-                    <EventCard>
-                        <ImagePlaceholder>
-                            <MusicNote sx={{ fontSize: 40, color: '#7c3aed', m: 2 }} />
-                        </ImagePlaceholder>
-                        <Typography variant="h6" sx={{ mb: 2 }}>Festival de Música Cubana</Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                            <CalendarMonth fontSize="small" color="action" />
-                            <Typography variant="body2">15 de Mayo, 2025</Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                            <Schedule fontSize="small" color="action" />
-                            <Typography variant="body2">5:00 PM</Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                            <LocationOn fontSize="small" color="action" />
-                            <Typography variant="body2">La Habana</Typography>
-                        </Box>
-                        <Button variant="outlined" fullWidth sx={{
-                            ...commonButtonStyles,
-                            borderColor: '#7c3aed',
-                            color: '#7c3aed',
-                            '&:hover': {
-                                ...commonButtonStyles['&:hover'],
-                                borderColor: '#7c3aed',
-                                bgcolor: 'rgba(124, 58, 237, 0.04)'
-                            }
-                        }}>
-                            Reservar
-                        </Button>
-                    </EventCard>
-
-                    <EventCard>
-                        <ImagePlaceholder>
-                            <Restaurant sx={{ fontSize: 40, color: '#7c3aed', m: 2 }} />
-                        </ImagePlaceholder>
-                        <Typography variant="h6" sx={{ mb: 2 }}>Feria Gastronómica</Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                            <CalendarMonth fontSize="small" color="action" />
-                            <Typography variant="body2">22 de Mayo, 2025</Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                            <Schedule fontSize="small" color="action" />
-                            <Typography variant="body2">12:00 PM</Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                            <LocationOn fontSize="small" color="action" />
-                            <Typography variant="body2">Santiago de Cuba</Typography>
-                        </Box>
-                        <Button variant="outlined" fullWidth sx={{
-                            ...commonButtonStyles,
-                            borderColor: '#7c3aed',
-                            color: '#7c3aed',
-                            '&:hover': {
-                                ...commonButtonStyles['&:hover'],
-                                borderColor: '#7c3aed',
-                                bgcolor: 'rgba(124, 58, 237, 0.04)'
-                            }
-                        }}>
-                            Reservar
-                        </Button>
-                    </EventCard>
-
-                    <EventCard>
-                        <ImagePlaceholder>
-                            <Movie sx={{ fontSize: 40, color: '#7c3aed', m: 2 }} />
-                        </ImagePlaceholder>
-                        <Typography variant="h6" sx={{ mb: 2 }}>Festival de Cine</Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                            <CalendarMonth fontSize="small" color="action" />
-                            <Typography variant="body2">5 de Junio, 2025</Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                            <Schedule fontSize="small" color="action" />
-                            <Typography variant="body2">7:00 PM</Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                            <LocationOn fontSize="small" color="action" />
-                            <Typography variant="body2">La Habana</Typography>
-                        </Box>
-                        <Button variant="outlined" fullWidth sx={{
-                            ...commonButtonStyles,
-                            borderColor: '#7c3aed',
-                            color: '#7c3aed',
-                            '&:hover': {
-                                ...commonButtonStyles['&:hover'],
-                                borderColor: '#7c3aed',
-                                bgcolor: 'rgba(124, 58, 237, 0.04)'
-                            }
-                        }}>
-                            Reservar
-                        </Button>
-                    </EventCard>
+                    {upcomingEvents.map((event, index) => (
+                        <EventCardItem key={index} event={event} />
+                    ))}
                 </Box>
 
                 <Button
